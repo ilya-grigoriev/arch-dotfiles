@@ -1,0 +1,6 @@
+#!/bin/bash
+
+duck() {
+	url="https://lite.duckduckgo.com/lite?&q="$*""
+	exec lynx "$url"
+}
