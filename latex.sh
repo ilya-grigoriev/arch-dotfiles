@@ -1,0 +1,1 @@
+sudo pacman -S texlive-latex texlive-binextra texlive-basic texlive-latexrecommended texlive-fontsrecommended texlive-xetex texlive-latexextra texlive-langcyrillic texlive-plaingeneric texlive-fontsextra pandoc
