@@ -1,0 +1,8 @@
+0	first-node
+h	global-prev-node
+l	global-next-node
+
+o	select-reference-this-line
+
+g	beginning-of-node
+G	end-of-node
