@@ -1,1 +1,1 @@
-sudo pacman -S flameshot obs-studio picom
+sudo pacman -S flameshot obs-studio picom gimp
