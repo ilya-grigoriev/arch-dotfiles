@@ -2,5 +2,15 @@
 
 duck() {
 	url="https://lite.duckduckgo.com/lite?&q="$*""
-	exec lynx "$url"
+	lynx -trace "$url"
+}
+
+wiki() {
+	url=$(echo "https://wikipedia.org/wiki/$*" | tr ' ' '_')
+	curl -L $url | html2text --ignore-images --ignore-links | less
+}
+
+wiki_ru() {
+	url=$(echo "https://ru.wikipedia.org/wiki/$*" | tr ' ' '_')
+	curl -L $url | html2text --ignore-images --ignore-links | less
 }
