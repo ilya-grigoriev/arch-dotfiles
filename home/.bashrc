@@ -17,10 +17,12 @@ alias nv="nvim"
 alias s="sudo pacman -S"
 alias ss="sudo pacman -Ss"
 alias r="sudo pacman -R"
+alias u="sudo pacman -Syu"
 
 alias ys="yay -S"
 alias yss="yay -Ss"
 alias yr="yay -R"
+alias yu="yay -Syu"
 
 alias cls="clear"
 alias lg="lazygit"
