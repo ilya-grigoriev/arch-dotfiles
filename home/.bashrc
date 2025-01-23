@@ -5,31 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-source ~/.env
-source ~/.scripts
-
-alias ls='ls --color=auto'
-alias l="ls -lah"
-alias z="zoxide"
-alias v="vim"
-alias nv="nvim"
-
-alias s="sudo pacman -S"
-alias ss="sudo pacman -Ss"
-alias r="sudo pacman -R"
-alias u="sudo pacman -Syu"
-
-alias ys="yay -S"
-alias yss="yay -Ss"
-alias yr="yay -R"
-alias yu="yay -Syu"
-
-alias cls="clear"
-alias lg="lazygit"
-alias ff="fastfetch"
-alias info="info --vi-keys"
-
-alias '?'=duck
+source ~/.config/.env
+source ~/.config/.scripts
+source ~/.config/.aliases
 
 set -o noclobber
 

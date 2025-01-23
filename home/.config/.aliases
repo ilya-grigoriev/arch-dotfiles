@@ -1,0 +1,45 @@
+alias ls='ls --color=auto'
+alias l="ls -lah"
+alias z="zoxide"
+alias v="vim"
+alias nv="nvim"
+
+alias s="sudo pacman -S"
+alias ss="sudo pacman -Ss"
+alias r="sudo pacman -R"
+alias u="sudo pacman -Syu"
+
+alias ys="yay -S"
+alias yss="yay -Ss"
+alias yr="yay -R"
+alias yu="yay -Syu"
+
+alias cls="clear"
+alias lg="lazygit"
+alias ff="fastfetch"
+alias info="info --vi-keys"
+alias p="python"
+alias gr="go run"
+alias o="xdg-open"
+
+alias restart="sudo systemctl restart"
+alias disable="sudo systemctl disable"
+alias enable="sudo systemctl enable"
+alias status="sudo systemctl status"
+alias start="sudo systemctl start"
+alias stop="sudo systemctl stop"
+
+alias wifi_scan="iwctl station wlan0 scan"
+alias wifi_net="iwctl station wlan0 get-networks"
+function wifi_con() {
+	iwctl station wlan0 connect $1
+}
+alias wifi_dis="iwctl station wlan0 disconnect"
+alias wifi_show="iwctl station wlan0 show"
+
+alias '?'=duck
+alias wu="sudo ip link set wlan0 down && sudo ip link set wlan0 up"
+alias pub_ip="curl ifconfig.me"
+alias gpt="cd ~/repos/g4f/ && source venv/bin/activate && g4f gui"
+alias p="ping google.com"
+# alias vpn=vpn
