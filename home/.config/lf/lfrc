@@ -1,4 +1,5 @@
 map d delete
+map x cut
 
 map ,
 map ,w $wal -i "$f"
@@ -15,4 +16,3 @@ cmd extract ${{
         *.7z) 7z x $f;;
     esac
 }}
-
