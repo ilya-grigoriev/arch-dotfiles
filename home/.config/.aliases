@@ -43,12 +43,6 @@ alias wifi_show="iwctl station wlan0 show"
 alias '?'=duck
 alias wu="sudo ip link set wlan0 down && sudo ip link set wlan0 up"
 alias pub_ip="curl ifconfig.me"
-function gpt() {
-	cd ~/repos/g4f/
-	source venv/bin/activate
-	g4f gui &
-	disown
-}
 alias p="ping google.com"
 # alias vpn=vpn
 alias dns="sudo systemctl restart systemd-resolved systemd-networkd"
@@ -62,3 +56,12 @@ alias m="man"
 function ap() {
 	apropos $1 | less
 }
+
+alias gpt_setup="pipx install g4f[all]"
+function gpt_run() {
+	nohup g4f api &
+	nohup g4f gui &
+	thorium-browser http://localhost:8080/chat
+	exit
+}
+alias gpt_stop="pkill g4f"
