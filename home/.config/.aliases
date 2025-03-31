@@ -61,7 +61,7 @@ alias gpt_setup="pipx install g4f[all]"
 function gpt_run() {
 	nohup g4f api &
 	nohup g4f gui &
-	thorium-browser http://localhost:8080/chat
+	nohup thorium-browser http://localhost:8080/chat &
 	exit
 }
 alias gpt_stop="pkill g4f"
