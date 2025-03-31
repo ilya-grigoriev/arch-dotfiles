@@ -56,6 +56,11 @@ alias m="man"
 function ap() {
 	apropos $1 | less
 }
+function vm() {
+	start libvirtd
+	nohup virt-manager &
+	exit
+}
 
 alias gpt_setup="pipx install g4f[all]"
 function gpt_run() {
