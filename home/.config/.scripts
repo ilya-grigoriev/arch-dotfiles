@@ -14,3 +14,45 @@ wiki_ru() {
 	url=$(echo "https://ru.wikipedia.org/wiki/$*" | tr ' ' '_')
 	curl -L $url | html2text --ignore-images --ignore-links | less
 }
+
+alias gpt_setup="pipx install g4f[all]"
+gpt_run() {
+	nohup g4f gui &
+	sleep 1
+	nohup g4f api &
+	sleep 1
+	nohup thorium-browser http://localhost:8080/chat &
+	sleep 1
+	exit
+}
+alias gpt_stop="pkill g4f"
+
+myman() {
+	number_section=$1
+	name_page=$2
+	curl -s "https://www.man7.org/linux/man-pages/man$number_section/$name_page.$number_section.html" | html2text | awk 'NR>12 {print $0}' | head -n -22 | mdless
+}
+
+dpi() {
+	ciadpi --tls-sni "www.google.com" -f-2 -r23+s --ip-opt --no-ipv6 &
+	disown
+}
+
+function ap() {
+	apropos $1 | less
+}
+
+function vm_run() {
+	sudo systemctl start libvirtd
+	sleep 1
+	nohup virt-manager &
+	exit
+}
+function vm_stop() {
+	sudo systemctl stop libvirtd*
+	if ifconfig -a | grep virbr; then
+		sudo ip link delete virbr0
+		sudo ip link delete virbr1
+		sudo ip link delete virbr2
+	fi
+}
