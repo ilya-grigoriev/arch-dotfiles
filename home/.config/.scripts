@@ -33,6 +33,12 @@ myman() {
 	curl -s "https://www.man7.org/linux/man-pages/man$number_section/$name_page.$number_section.html" | html2text | awk 'NR>12 {print $0}' | head -n -22 | mdless
 }
 
+not() {
+	notes_dirpath="$HOME/dev/un"
+	note_filepath="$notes_dirpath/$(cd ~/dev/un; fzf)"
+	(cd $notes_dirpath; vim $note_filepath)
+}
+
 dpi() {
 	ciadpi --tls-sni "www.google.com" -f-2 -r23+s --ip-opt --no-ipv6 &
 	disown
