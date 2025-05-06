@@ -1,0 +1,18 @@
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+unbind-key d
+unbind-key u
+
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+bind-key u pageup
+bind-key d pagedown
+
+unbind-key Q
+unbind-key q
+bind-key q hard-quit
