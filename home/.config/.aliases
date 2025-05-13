@@ -31,6 +31,7 @@ alias enable="sudo systemctl enable"
 alias status="sudo systemctl status"
 alias start="sudo systemctl start"
 alias stop="sudo systemctl stop"
+alias list="sudo systemctl list-unit-files"
 
 alias wifi_scan="iwctl station wlan0 scan"
 alias wifi_net="iwctl station wlan0 get-networks"
@@ -44,29 +45,13 @@ alias '?'=duck
 alias wu="sudo ip link set wlan0 down && sudo ip link set wlan0 up"
 alias pub_ip="curl ifconfig.me"
 alias p="ping google.com"
-alias dns="sudo systemctl restart systemd-resolved systemd-networkd"
-function dpi() {
-	ciadpi --tls-sni "www.google.com" -f-2 -r23+s --ip-opt --no-ipv6 &
-	disown
-}
 alias clone="git clone"
 alias cht="cht.sh"
 alias m="man"
-function ap() {
-	apropos $1 | less
-}
-function vm() {
-	start libvirtd
-	nohup virt-manager &
-	exit
-}
-alias vlr='less /var/log/"$(cd /var/log/; fzf)"'
+alias loc="plocate"
+alias pomo="pomo -n"
+alias vlr='file=/var/log/"$(cd /var/log/; fzf)"; if [ -f $file ]; then less $file; fi'
+alias un='glow $HOME/dev/un'
 
-alias gpt_setup="pipx install g4f[all]"
-function gpt_run() {
-	nohup g4f gui &
-	nohup g4f api &
-	nohup thorium-browser http://localhost:8080/chat &
-	exit
-}
-alias gpt_stop="pkill g4f"
+alias dns_reload="sudo systemctl restart systemd-resolved systemd-networkd"
+alias dns_config="sudo vim /etc/resolvconf.conf"

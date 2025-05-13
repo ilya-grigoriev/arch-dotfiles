@@ -39,6 +39,10 @@ not() {
 	(cd $notes_dirpath; vim $note_filepath)
 }
 
+yrl() {
+	yay -R $(yay -Q | cut -d ' ' -f 1 | fzf)
+}
+
 dpi() {
 	ciadpi --tls-sni "www.google.com" -f-2 -r23+s --ip-opt --no-ipv6 &
 	disown
