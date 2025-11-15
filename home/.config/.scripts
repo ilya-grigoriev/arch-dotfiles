@@ -21,7 +21,7 @@ gpt_run() {
 	sleep 1
 	nohup g4f api &
 	sleep 1
-	nohup thorium-browser http://localhost:8080/chat &
+	nohup firefox http://localhost:8080/chat &
 	sleep 1
 	exit
 }
@@ -53,16 +53,34 @@ function ap() {
 }
 
 function vm_run() {
+	sudo systemctl enable libvirtd
 	sudo systemctl start libvirtd
 	sleep 1
 	nohup virt-manager &
 	exit
 }
 function vm_stop() {
-	sudo systemctl stop libvirtd*
-	if ifconfig -a | grep virbr; then
-		sudo ip link delete virbr0
-		sudo ip link delete virbr1
-		sudo ip link delete virbr2
+	sudo systemctl disable libvirtd.service
+	sudo systemctl stop libvirtd.service
+	for i in $(ip a | awk '/virbr.:/ {print substr($2, 0, length($2)-1)}'); do
+		sudo ip link delete $i
+	done
+}
+
+function sss() {
+	package_name=$1
+	if [ "$package_name" ]; then
+		selected_package_name=$(sudo pacman -Ss $package_name | awk '{if (NR % 2 != 0) print $0}' | fzf)
+		if [ "$selected_package_name" ]; then
+			formatted_package_name=$(echo $selected_package_name | cut -d ' ' -f 1)
+			echo $formatted_package_name
+			sudo pacman -S $formatted_package_name
+		fi
 	fi
+}
+
+function fusb() {
+	iso=$1
+	usb=$2
+	sudo dd bs=4M if=$iso of=$usb conv=fsync oflag=direct status=progress
 }

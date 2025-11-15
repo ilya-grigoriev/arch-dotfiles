@@ -2,12 +2,12 @@
 
 alias ls='ls --color=auto'
 alias l="ls -lah"
-alias z="zoxide"
 alias v="vim"
 alias nv="nvim"
+alias bl="bluetuith"
 
 alias s="sudo pacman -S"
-alias ss="sudo pacman -Ss"
+# alias ss="sudo pacman -Ss"
 alias r="sudo pacman -R"
 alias u="sudo pacman -Syu"
 
@@ -23,7 +23,12 @@ alias info="info --vi-keys"
 alias py="python"
 alias gr="go run"
 alias o="xdg-open"
+alias dfind='dragon-drop $(fzf)'
+alias tm="tmux"
+
 alias gtree="git log --oneline --graph --all --decorate"
+alias clone="git clone"
+alias gp="git pull origin main"
 
 alias restart="sudo systemctl restart"
 alias disable="sudo systemctl disable"
@@ -40,12 +45,12 @@ function wifi_con() {
 }
 alias wifi_dis="iwctl station wlan0 disconnect"
 alias wifi_show="iwctl station wlan0 show"
+alias wifi_res="sudo systemctl restart systemd-networkd systemd-resolved"
 
 alias '?'=duck
 alias wu="sudo ip link set wlan0 down && sudo ip link set wlan0 up"
 alias pub_ip="curl ifconfig.me"
 alias p="ping google.com"
-alias clone="git clone"
 alias cht="cht.sh"
 alias m="man"
 alias loc="plocate"
@@ -53,5 +58,16 @@ alias pomo="pomo -n"
 alias vlr='file=/var/log/"$(cd /var/log/; fzf)"; if [ -f $file ]; then less $file; fi'
 alias un='glow $HOME/dev/un'
 
-alias dns_reload="sudo systemctl restart systemd-resolved systemd-networkd"
+alias dns_reload="sudo systemctl restart systemd-resolved systemd-networkd && sudo resolvconf -u"
 alias dns_config="sudo vim /etc/resolvconf.conf"
+
+alias ca_ls="cursor-agent ls"
+alias ca="cursor-agent"
+
+function record() {
+	pw-record --target $(pactl list sinks short | tail -n 1 | awk '{print $1}') "$1".flac
+}
+
+alias present="typst init @preview/slydst $1"
+
+alias darkmode="wlsunset -g 0.25"
