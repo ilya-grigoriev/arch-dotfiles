@@ -2,12 +2,11 @@
 
 alias ls='ls --color=auto'
 alias l="ls -lah"
-alias v="vim"
+alias v="nvim"
 alias nv="nvim"
 alias bl="bluetuith"
 
 alias s="sudo pacman -S"
-# alias ss="sudo pacman -Ss"
 alias r="sudo pacman -R"
 alias u="sudo pacman -Syu"
 
@@ -71,3 +70,12 @@ function record() {
 alias present="typst init @preview/slydst $1"
 
 alias darkmode="wlsunset -g 0.25"
+
+alias hiddify_vpn="pkexec env DISPLAY=$DISPLAY WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_SESSION_TYPE=$XDG_SESSION_TYPE XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR hiddify"
+
+alias packet="QT_QPA_PLATFORM=xcb packettracer"
+
+alias yt_formats="yt-dlp -F $1"
+alias yt_vid="yt-dlp -f bestvideo+bestaudio -S res,ext:mp4:m4a --recode-video mp4 --remote-components ejs:github $1"
+alias yt_sub="yt-dlp --skip-download --write-auto-subs --write-subs --sub-lang en --convert-subs srt $1"
+alias yt_sng="yt-dlp -x -f bestaudio --audio-format mp3 $1"
