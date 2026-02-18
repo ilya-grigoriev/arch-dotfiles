@@ -1,4 +1,4 @@
-#/bin/sh
+#!/usr/bin/env bash
 
 alias ls='ls --color=auto'
 alias l="ls -lah"
@@ -15,7 +15,6 @@ alias yss="yay -Ss"
 alias yr="yay -R"
 alias yu="yay -Syu"
 
-alias cls="clear"
 alias lg="lazygit"
 alias ff="fastfetch"
 alias info="info --vi-keys"
@@ -23,7 +22,6 @@ alias py="python"
 alias gr="go run"
 alias o="xdg-open"
 alias dfind='dragon-drop $(fzf)'
-alias tm="tmux"
 
 alias gtree="git log --oneline --graph --all --decorate"
 alias clone="git clone"
@@ -56,9 +54,13 @@ alias loc="plocate"
 alias pomo="pomo -n"
 alias vlr='file=/var/log/"$(cd /var/log/; fzf)"; if [ -f $file ]; then less $file; fi'
 alias un='glow $HOME/dev/un'
+alias cal="/usr/bin/cal -m"
+alias an="nvim /home/ilya/dev/anki/notes"
 
-alias dns_reload="sudo systemctl restart systemd-resolved systemd-networkd && sudo resolvconf -u"
+alias dns_reload="sudo systemctl restart systemd-resolved systemd-networkd; sudo resolvconf -u"
 alias dns_config="sudo vim /etc/resolvconf.conf"
+alias dns_disable="sudo systemctl stop systemd-resolved; sudo systemctl restart NetworkManager"
+alias dns_enable="sudo systemctl enable --now systemd-resolved; sudo systemctl restart NetworkManager"
 
 alias ca_ls="cursor-agent ls"
 alias ca="cursor-agent"
@@ -79,3 +81,8 @@ alias yt_formats="yt-dlp -F $1"
 alias yt_vid="yt-dlp -f bestvideo+bestaudio -S res,ext:mp4:m4a --recode-video mp4 --remote-components ejs:github $1"
 alias yt_sub="yt-dlp --skip-download --write-auto-subs --write-subs --sub-lang en --convert-subs srt $1"
 alias yt_sng="yt-dlp -x -f bestaudio --audio-format mp3 $1"
+
+function pdf() {
+	file=$(find . -name '*.pdf' -type f 2> /dev/null | fzf --track --color=bw)
+	nohup zathura $file &
+}
